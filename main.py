@@ -5,7 +5,11 @@ import requests
 from bs4 import BeautifulSoup
 
 app = FastAPI()
-
+# Root route to welcome users
+@app.get("/")
+def read_root():
+    return {"message": "Welcome to the API!"}
+    
 # Database Setup (SQLite by default, update for PostgreSQL)
 DATABASE_URL = "sqlite:///./leads.db"
 engine = create_engine(DATABASE_URL, connect_args={"check_same_thread": False})
